@@ -4,8 +4,6 @@ from .models import Advocate, Company
 from .serializers import AdvocateSerializer, CompanySerializer
 from rest_framework import viewsets
 
-
-
 class AdvocatesViewSet(viewsets.ModelViewSet):
 	serializer_class = AdvocateSerializer
 
@@ -13,6 +11,11 @@ class AdvocatesViewSet(viewsets.ModelViewSet):
 		advocate = Advocate.objects.all()
 		return advocate
 
+
+	def retrieve(self, request, pk):
+		advocate = Advocate.objects.filter(id=pk)
+		ser = AdvocateSerializer(advocate[0])
+		return Response(ser.data)
 
 class CompanyViewSet(viewsets.ModelViewSet):
 	serializer_class = CompanySerializer

@@ -6,7 +6,7 @@ class CompanySerializer(serializers.ModelSerializer):
 	class Meta:
 		ordering = ['-id']
 		model = Company
-		fields = ("company_name", "company_logo", "summary")
+		fields = ("company_name", "company_logo", "summary", "advocates_name")
 
 
 class LinkSerializer(serializers.ModelSerializer):
